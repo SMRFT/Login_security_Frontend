@@ -4,6 +4,8 @@ import axios from "axios";
 import styled from "styled-components";
 import {validate} from "./jwt-check.js";
 
+const securityBaseUrl = import.meta.env.VITE_BACKEND_SECURITY_BASE_URL;
+
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -145,7 +147,7 @@ const Login = () => {
     }
 
     try {
-      const res = await axios.post("http://127.0.0.1:8000/Security/login/", formData, {
+      const res = await axios.post(securityBaseUrl + "login/", formData, {
         headers: { "Content-Type": "application/json" },
       });
 
